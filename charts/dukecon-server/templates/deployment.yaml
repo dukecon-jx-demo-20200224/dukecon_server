@@ -31,8 +31,8 @@ spec:
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         volumeMounts:
-          - name: resources-volume
-            mountPath: /opt/dukecon/resources
+          - name: config-volume
+            mountPath: /opt/dukecon/config
         livenessProbe:
           httpGet:
             path: {{ .Values.probePath }}
@@ -52,7 +52,7 @@ spec:
 {{ toYaml .Values.resources | indent 12 }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
       volumes:
-      - name: resources-volume
+      - name: config-volume
         configMap:
            name: jx-dukecon-resources
 {{- end }}
