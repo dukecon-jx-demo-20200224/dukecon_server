@@ -14,7 +14,7 @@
             <enabled>true</enabled>
         </remote>
         <local>
-            <enabled>true</enabled>
+            <enabled>false</enabled>
         </local>
     </buildCache>
 </gradleEnterprise>
