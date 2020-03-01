@@ -7,7 +7,7 @@
     <parent>
         <artifactId>dukecon-server</artifactId>
         <groupId>org.dukecon</groupId>
-        <version>1.6-SNAPSHOT</version>
+        <version>1.7-SNAPSHOT</version>
     </parent>
 
     <packaging>pom</packaging>
@@ -22,7 +22,17 @@
     <dependencies>
         <dependency>
             <groupId>org.dukecon</groupId>
+            <artifactId>dukecon-server-resources</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dukecon</groupId>
             <artifactId>dukecon-server-springboot</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dukecon</groupId>
+            <artifactId>dukecon-server-converters</artifactId>
             <version>${project.version}</version>
         </dependency>
     </dependencies>
@@ -60,7 +70,7 @@
                                         <cmd>
                                             <shell>java -Djava.security.egd=file:/dev/./urandom \
                                                 ${JAVA_DEFAULT_OPTS} ${JAVA_OPTS} \
-                                                -jar /opt/dukecon/dukecon.jar \
+                                                -jar /opt/dukecon/dukecon-server-springboot.jar \
                                                 ${DUKECON_ARGS}
                                             </shell>
                                         </cmd>
@@ -85,7 +95,27 @@
                                                             <include>org.dukecon:dukecon-server-springboot</include>
                                                         </includes>
                                                         <outputDirectory>.</outputDirectory>
-                                                        <outputFileNameMapping>dukecon.jar</outputFileNameMapping>
+                                                        <outputFileNameMapping>dukecon-server-springboot.jar</outputFileNameMapping>
+                                                    </dependencySet>
+                                                    <dependencySet>
+                                                        <includes>
+                                                            <include>org.dukecon:dukecon-server-converters</include>
+                                                        </includes>
+                                                        <outputDirectory>.</outputDirectory>
+                                                        <outputFileNameMapping>dukecon-server-converters.jar</outputFileNameMapping>
+                                                    </dependencySet>
+                                                    <dependencySet>
+                                                        <includes>
+                                                            <include>org.dukecon:dukecon-server-resources</include>
+                                                        </includes>
+                                                        <outputDirectory>resources</outputDirectory>
+                                                        <unpack>true</unpack>
+                                                        <unpackOptions>
+                                                            <includes>
+                                                                <include>public/**</include>
+                                                                <include>templates/**</include>
+                                                            </includes>
+                                                        </unpackOptions>
                                                     </dependencySet>
                                                 </dependencySets>
                                             </inline>

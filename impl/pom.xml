@@ -6,7 +6,7 @@
     <parent>
         <groupId>org.dukecon</groupId>
         <artifactId>dukecon-server</artifactId>
-        <version>1.6-SNAPSHOT</version>
+        <version>1.7-SNAPSHOT</version>
     </parent>
 
     <artifactId>dukecon-server-springboot</artifactId>
@@ -109,9 +109,15 @@
             <version>${project.parent.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.dukecon.server</groupId>
+            <groupId>org.dukecon</groupId>
             <artifactId>dukecon-server-repositories</artifactId>
             <version>${project.parent.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.dukecon</groupId>
+            <artifactId>dukecon-server-resources</artifactId>
+            <version>${project.parent.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>
@@ -184,6 +190,11 @@
         <dependency>
             <groupId>org.keycloak</groupId>
             <artifactId>keycloak-spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.keycloak</groupId>
+            <artifactId>keycloak-spring-boot-adapter-core</artifactId>
+            <version>${keycloak.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

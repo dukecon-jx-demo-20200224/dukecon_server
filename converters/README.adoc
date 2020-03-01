@@ -1,0 +1,71 @@
+== Context
+This (*dukecon_converters*) contains jobs to generate conference-files in dukecon conference format.
+The conference-files will be served statically by a web-server.
+Beside the conference data in dukecon format, images for speakers are extracted.
+
+Example use:
+-----
+java -jar dukecon-server-converters-1.7-SNAPSHOT.jar file:conferences-javaland.yml ./resources
+-----
+
+=== Input
+[%header,cols="1,1,1a"]
+|=======
+|#
+|Input-parameter
+ |Description
+|1
+|configuration-file
+
+|The base to generate conference-Files is a configuration per conference.
+The project *dukecon_resources* contains all configurations.
+
+|2
+|resources-folder
+|In this folder the listed input is taken as given
+[%header,cols="1,1"]
+!=======
+!name
+!description
+!public/img
+! folder with base-images per conference to generate image-resources.json per conference
+!templates/styles.gtl
+! templates folder with styles.gtl to generate styles.css per conference.
+!=======
+|=======
+
+=== Output
+[%header,cols=2]
+|=======
+|Output
+ |Description
+|htdocs/rest/<conference>/<year>/rest/init.json
+ |Initialization-file for pwa-dukecon-client
+|htdocs/rest/<conference>/<year>/rest/image-resources.json
+ |Image data for core images for a conference (e.g. logo, etc.)
+|htdocs/rest/<conference>/<year>/rest/conferences/<conferenceId>.json
+ |Conference Data in Dukecon-format
+|htdocs/rest/<conference>/<year>/rest/speaker/images/<md5>
+ |Images of speakers, each image is relevant for at least one conference
+|htdocs/rest/<conference>/<year>/styles.css
+|Styledefinitions for a conference
+|htdocs/rest/<conference>/<year>/img/favicon.ico
+ |favicon.ico für den Browser
+|tempbackupdir/<conferenceId>/<resource>.json
+ |Backup of resources given in given conferences.xml as input
+|=======
+
+== TODO: Runtime
+Übergang auf dem SERVER - Quelle für die configurations-files
+/data/dukecon/latest-static
+/data/dukecon/latest
+
+Manuell:
+-
+
+Ziel:
+Testing/Prod:
+cronjob - converters starten + config als parameter.
+
+Latest:
+Jenkins-Job
