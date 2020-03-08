@@ -9,7 +9,9 @@ image:
 
 # define environment variables here as a map of key: value
 env:
-
+  - JAVA_OPTS: "-XX:+ExitOnOutOfMemoryError -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/opt/dukecon/heapdumps"
+  - SPRING_CONFIG_ADDITIONAL_LOCATION: "/opt/dukecon/config"
+  - SPRING_PROFILES_ACTIVE: "docker"
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false
 
